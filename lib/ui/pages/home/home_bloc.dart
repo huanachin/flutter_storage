@@ -1,29 +1,15 @@
-import 'dart:async';
-
-import 'package:flutter_storage/data/model/product_entity.dart';
-import 'package:flutter_storage/data/repository/abstract/product_repository.dart';
+import 'package:flutter_storage/data/repository/abstract/settings_repository.dart';
 
 class HomeBloc {
-  final ProductRepository _productRepository;
+  final SettingsRepository _settingsRepository;
 
-  HomeBloc(this._productRepository);
+  HomeBloc(this._settingsRepository);
 
-  final _productsController = StreamController<List<ProductEntity>>();
-
-  Stream<List<ProductEntity>> get productsStream => _productsController.stream;
-
-  void updateProducts() async {
-    final products = await _productRepository.getProducts();
-    _productsController.add(products);
+  void setDarkMode(bool value) {
+    _settingsRepository.setDarkMode(value);
   }
 
-  void insertProduct(ProductEntity product) {
-    _productRepository.insertProduct(product);
-    updateProducts();
-  }
-
-  void deleteProduct(String code) {
-    _productRepository.deleteProduct(code);
-    updateProducts();
+  bool isDarkMode() {
+    return _settingsRepository.isDarkMode();
   }
 }
