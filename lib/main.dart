@@ -5,7 +5,7 @@ import 'data/di/injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies();
+  await setup();
   runApp(const MyApp());
 }
 

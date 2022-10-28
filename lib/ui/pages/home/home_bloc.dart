@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_storage/data/model/product_entity.dart';
 import 'package:flutter_storage/data/repository/abstract/product_repository.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class HomeBloc {
   final ProductRepository _productRepository;
 
